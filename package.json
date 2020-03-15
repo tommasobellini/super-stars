@@ -1,0 +1,48 @@
+{
+  "name": "super-stars",
+  "version": "1.0.0",
+  "description": "My wondrous Nuxt.js project",
+  "author": "tommasobellini",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate",
+    "deploy": "nuxt generate && firebase deploy --only hosting --project nuxt-fire-demo",
+    "buildploy": "npm run build && npm run deploy",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/firebase": "^4.0.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "bootstrap": "^4.1.3",
+    "bootstrap-vue": "^2.0.0",
+    "core-js": "^2.0.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "firebase": "^7.9.1",
+    "node-slack": "^0.0.7",
+    "nuxt": "^2.0.0",
+    "nuxt-start": "^2.11.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^3.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": ">=2.16.0",
+    "eslint-plugin-jest": ">=22.3.0",
+    "eslint-plugin-node": ">=8.0.1",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "nodemon": "^1.18.9",
+    "stylelint": "^10.1.0"
+  }
+}
