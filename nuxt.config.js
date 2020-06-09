@@ -1,5 +1,3 @@
-const bodyParser = require('body-parser')
-
 module.exports = {
   mode: 'spa',
   /*
@@ -16,10 +14,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/whistle-stars.svg' }
     ]
   },
-  serverMiddleware: [
-    bodyParser.json(),
-    '~/api/index.js'
-  ],
   /*
   ** Customize the progress-bar color
   */

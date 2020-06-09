@@ -62,7 +62,7 @@
 <script>
 import { BIconStarFill } from "bootstrap-vue";
 import firebase from "firebase";
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   name: "ItemListCard",
@@ -128,13 +128,13 @@ export default {
           totCoffee = imgCoffee == true ? coffee + 0 : coffee + 1;
           tot2Stars = totalStars + 1;
         }
-        if (this.deleteLastCoffee && totCoffee >= 0) {
-          totCoffee = coffee - 1;
+        if (this.deleteLastCoffee  && totCoffee >= 0) {
+            totCoffee = coffee - 1;
         }
-        console.log(totStars);
+        console.log(totStars)
         if (totStars == 5) {
-          totStars = 0;
-          totCoffee = coffee + 1;
+            totStars = 0;
+            totCoffee = coffee + 1;
         }
         await teamsRef.set({
           name: name,
@@ -145,33 +145,15 @@ export default {
         this.$refs["modal-2"].hide();
         this.stars = totStars;
         this.coffee = totCoffee;
-        if (stars != totStars) {
+        if(stars != totStars ) {
           this.confirmStar = true;
         }
-        if (coffee != totCoffee) {
+        if(coffee != totCoffee) {
           this.confirmCoffee = true;
         }
-        if (this.confirmStar == true && this.confirmCoffee == false) {
-          console.log("ciao");
-          axios.post(
-            "https://hooks.slack.com/services/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",
-            { json: { text: "New Star assigned to " + name } }
-          ).then((resp) => {
-            console.log(resp)
-          })
-        }
-        if (this.confirmStar == false && this.confirmCoffee == true) {
-          axios.post(
-            "https://hooks.slack.com/services/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",
-            { json: { text: "New Coffee assigned to " + name } }
-          );
-        }
-        if (this.confirmStar == true && this.confirmCoffee == true) {
-          axios.post(
-            "https://hooks.slack.com/services/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",
-            { json: { text: "New Star and Coffee assigned to " + name } }
-          );
-        }
+        axios.post('https://super-stars-back.herokuapp.com/sendSlack', {star: this.confirmStar, coffee: this.confirmCoffee, user: name}).then((resp)=>{
+          console.log(resp)
+        })
         this.confirmStar = false;
         this.confirmCoffee = false;
       } catch (e) {
